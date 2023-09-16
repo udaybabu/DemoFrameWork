@@ -1,0 +1,15 @@
+<mat-list class="sidebar" role="list">
+  <mat-list-item role="listitem" *ngFor="let mainMenu of menu.menu | keyvalue:keepOrder"
+    [ngClass]="{opened: active === mainMenu.value.key}"><span (click)="loadSubmenu(mainMenu.value)"
+      class="title">{{mainMenu.value.title}}</span>
+    <span class="icon-down-style">
+      <mat-icon aria-hidden="false" aria-label="toggle icon">expand_more</mat-icon>
+    </span>
+    <mat-list class="sidebar-submenu" role="list">
+      <mat-list-item role="listitem" *ngFor="let submenu of mainMenu.value.menu | keyvalue:keepOrder"
+        [ngClass]="{active: childActive==submenu.value.key}"><span
+          (click)="loadSubMenuData(submenu.value)">{{submenu.value.title}}</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-list-item>
+</mat-list>

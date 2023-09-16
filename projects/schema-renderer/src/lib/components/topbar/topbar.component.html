@@ -1,0 +1,9 @@
+<ng-container *ngFor="let mainMenu of menu.menu | keyvalue">
+  <button mat-button [matMenuTriggerFor]="menu" [ngClass]="{opened: active === mainMenu.value.key}"
+    (click)="loadSubmenu(mainMenu.value)">{{mainMenu.value.title}}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let submenu of mainMenu.value.menu | keyvalue"
+      [ngClass]="{active: childActive==submenu.value.key}"
+      (click)="loadSubMenuData(submenu.value)">{{submenu.value.title}}</button>
+  </mat-menu>
+</ng-container>

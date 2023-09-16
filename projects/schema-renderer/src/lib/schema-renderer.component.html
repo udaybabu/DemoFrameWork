@@ -1,0 +1,26 @@
+<div class="wrapper" [ngClass]="menus.type">
+  <div class="menu-wrapper">
+    <ng-container ipcDynamicMenu *ngIf="menus.enable" [menu]="menus" (loadFormByKey)="emitFormByKey($event)" [type]="menus.type">
+    </ng-container>
+  </div>
+  <div class="form-wrapper">
+    <div class="panel">
+      <div class="panel-header">
+        <h2 class="title">{{title}}</h2>
+      </div>
+      <form class="ipc-schema-renderer form-renderer-wrapper" (click)="onClickForm()">
+        <ng-container *ngFor="let field of fields;" ipcDynamicField
+          (loadExternalLinkTarget)="loadExternalLinkTarget($event)" (loadToggleChildren)="loadToggleChildren($event)"
+          [field]="field" [group]="form">
+        </ng-container>
+      </form>
+    </div>
+  </div>
+  <div class="footer-wrapper" *ngIf="isFormSubmitted">
+    <div class="footer-wrapper-note">
+      You've made some changes
+    </div>
+    <button class="button-save" mat-button (click)="onSubmit($event)">Save</button>
+    <button class="button-cancel" mat-button (click)="resetForm($event)">Cancel</button>
+  </div>
+</div>

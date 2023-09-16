@@ -4,6 +4,20 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "demo-lib": [
+        "dist/demo-lib/demo-lib",
+        "dist/demo-lib"
+      ],
+      "schema-render": [
+        "dist/schema-render/schema-render",
+        "dist/schema-render"
+      ],
+      "schema-renderer": [
+        "dist/schema-renderer/schema-renderer",
+        "dist/schema-renderer"
+      ]
+    },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
